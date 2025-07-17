@@ -24,20 +24,22 @@ def display_chat_history():
                     with st.chat_message("assistant", avatar="🪷"):
                         st.write(message["content"])
     else:
-        # Welcome message
+        # Welcome message with professional styling
         with st.chat_message("assistant", avatar="🪷"):
-            st.write("""
-            Welcome to Aarogya Vatika! 🌿 
-            
-            I'm here to help you with:
-            • Product information and recommendations
-            • Shipping and delivery details
-            • Return and refund policies
-            • Ayurvedic wellness guidance
-            • General store information
-            
-            How can I assist you today?
-            """)
+            st.markdown("""
+            <div style="background: linear-gradient(135deg, #e8f5e8 0%, #f0f8ff 100%); padding: 20px; border-radius: 10px; border: 1px solid #2E8B57;">
+                <h3 style="color: #2E8B57; margin: 0 0 15px 0;">🌿 Welcome to Aarogya Vatika!</h3>
+                <p style="color: #555; margin: 10px 0;">I'm your AI assistant, here to help you with:</p>
+                <ul style="color: #666; padding-left: 20px; margin: 15px 0;">
+                    <li>🛍️ Product information and recommendations</li>
+                    <li>🚚 Shipping and delivery details</li>
+                    <li>🔄 Return and refund policies</li>
+                    <li>🌱 Ayurvedic wellness guidance</li>
+                    <li>ℹ️ General store information</li>
+                </ul>
+                <p style="color: #2E8B57; font-weight: bold; margin: 15px 0 0 0;">How can I assist you today?</p>
+            </div>
+            """, unsafe_allow_html=True)
 
 def format_product_info(products: List[Dict]) -> str:
     """Format product information for display"""
