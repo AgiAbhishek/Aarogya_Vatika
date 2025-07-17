@@ -116,26 +116,28 @@ def main():
     </div>
     """, unsafe_allow_html=True)
     
-    # Sample questions with improved styling - positioned before chat input
-    st.markdown("""
-    <div style="background: #f0f8ff; padding: 15px; border-radius: 8px; margin: 20px 0;">
-        <h4 style="color: #2E8B57; margin: 0 0 15px 0;">🤔 Common Questions</h4>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        if st.button("🛍️ What products do you offer?", use_container_width=True):
-            handle_sample_question("What products do you offer?", chat_handler)
-    
-    with col2:
-        if st.button("🚚 Shipping and delivery info?", use_container_width=True):
-            handle_sample_question("What are your shipping and delivery policies?", chat_handler)
-    
-    with col3:
-        if st.button("🔄 Return policy?", use_container_width=True):
-            handle_sample_question("What is your return and refund policy?", chat_handler)
+    # Show common questions only if there's no chat history
+    if not st.session_state.chat_history:
+        # Sample questions with improved styling - positioned before chat input
+        st.markdown("""
+        <div style="background: #f0f8ff; padding: 15px; border-radius: 8px; margin: 20px 0;">
+            <h4 style="color: #2E8B57; margin: 0 0 15px 0;">🤔 Common Questions</h4>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            if st.button("🛍️ What products do you offer?", use_container_width=True):
+                handle_sample_question("What products do you offer?", chat_handler)
+        
+        with col2:
+            if st.button("🚚 Shipping and delivery info?", use_container_width=True):
+                handle_sample_question("What are your shipping and delivery policies?", chat_handler)
+        
+        with col3:
+            if st.button("🔄 Return policy?", use_container_width=True):
+                handle_sample_question("What is your return and refund policy?", chat_handler)
     
     user_input = st.chat_input("💬 Ask me anything about Aarogya Vatika...")
     
