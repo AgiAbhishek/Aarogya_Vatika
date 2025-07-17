@@ -7,6 +7,8 @@ This is a Streamlit-based customer support chatbot for Aarogya Vatika, an Ayurve
 ## User Preferences
 
 Preferred communication style: Simple, everyday language.
+UI preferences: Professional layout with proper bullet formatting, official branding integration.
+API Integration: Groq API key configured for natural language processing.
 
 ## System Architecture
 

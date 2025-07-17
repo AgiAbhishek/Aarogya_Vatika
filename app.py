@@ -19,7 +19,10 @@ initialize_session_state()
 # Initialize Groq client
 @st.cache_resource
 def get_groq_client():
-    api_key = os.getenv("GROQ_API_KEY", "gsk_default_key")
+    api_key = os.getenv("GROQ_API_KEY")
+    if not api_key:
+        st.error("GROQ_API_KEY environment variable is not set. Please add your API key to continue.")
+        st.stop()
     return Groq(api_key=api_key)
 
 # Initialize knowledge base
@@ -41,31 +44,51 @@ def main():
     
     # Sidebar with store information
     with st.sidebar:
+        # Logo section
+        try:
+            st.image("attached_assets/logo_1752783306177.jpeg", width=200)
+        except:
+            try:
+                st.image("attached_assets/logo_1752783780690.jpeg", width=200)
+            except:
+                st.header("🪷 Aarogya Vatika")
+        
+        st.markdown("---")
+        
         st.header("🌿 About Aarogya Vatika")
         st.markdown("""
         **Ayurvedic Wellness Redefined**
         
-        • 45+ years of traditional healing wisdom
-        • 50+ Pure Ayurvedic Products
-        • Expert Doctor Guidance
-        • 7,200+ Members Community
-        
-        **Contact Us:**
-        📞 +91-9910474566
-        📧 aumyanaturals@gmail.com
-        📍 D-9, Sector-3, Noida, U.P. – 201301
+        - 45+ years of traditional healing wisdom
+        - 50+ Pure Ayurvedic Products  
+        - Expert Doctor Guidance
+        - 7,200+ Members Community
         """)
+        
+        st.markdown("---")
+        
+        st.header("📞 Contact Information")
+        st.markdown("""
+        **Phone:** +91-9910474566  
+        **Email:** aumyanaturals@gmail.com  
+        **Address:** D-9, Sector-3, Noida, U.P. – 201301  
+        **Website:** [www.aarogyavatika.com](https://www.aarogyavatika.com)
+        """)
+        
+        st.markdown("---")
         
         st.header("🛍️ Quick Links")
         st.markdown("""
-        • [Shop Products](https://www.aarogyavatika.com/collections/all)
-        • [Women's Health](https://www.aarogyavatika.com/collections/women-s-health)
-        • [Gut Health](https://www.aarogyavatika.com/collections/gut-health)
-        • [Immunity Boosters](https://www.aarogyavatika.com/collections/herbs-suppliments)
-        • [Consultation](https://www.aarogyavatika.com/pages/consultation)
+        - [Shop Products](https://www.aarogyavatika.com/collections/all)
+        - [Women's Health](https://www.aarogyavatika.com/collections/women-s-health)
+        - [Gut Health](https://www.aarogyavatika.com/collections/gut-health)
+        - [Immunity Boosters](https://www.aarogyavatika.com/collections/herbs-suppliments)
+        - [Consultation](https://www.aarogyavatika.com/pages/consultation)
         """)
         
-        if st.button("Clear Chat History"):
+        st.markdown("---")
+        
+        if st.button("🗑️ Clear Chat History", use_container_width=True):
             st.session_state.chat_history = []
             st.rerun()
     
