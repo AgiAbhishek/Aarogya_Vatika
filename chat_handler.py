@@ -74,7 +74,7 @@ Remember to be helpful, informative, and guide customers toward finding the righ
             
             # Generate response using Groq
             response = self.groq_client.chat.completions.create(
-                model="llama-3.1-70b-versatile",
+                model="llama-3.3-70b-versatile",
                 messages=messages,
                 max_tokens=1024,
                 temperature=0.3,
