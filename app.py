@@ -109,7 +109,14 @@ def main():
     # Chat input
     chat_handler = get_chat_handler()
     
-    # Sample questions with improved styling
+    # Chat input with professional styling
+    st.markdown("""
+    <div style="margin-top: 30px; margin-bottom: 15px;">
+        <hr style="border: 1px solid #e0e0e0; margin: 20px 0;">
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # Sample questions with improved styling - positioned before chat input
     st.markdown("""
     <div style="background: #f0f8ff; padding: 15px; border-radius: 8px; margin: 20px 0;">
         <h4 style="color: #2E8B57; margin: 0 0 15px 0;">🤔 Common Questions</h4>
@@ -130,13 +137,6 @@ def main():
         if st.button("🔄 Return policy?", use_container_width=True):
             handle_sample_question("What is your return and refund policy?", chat_handler)
     
-    # Chat input with professional styling
-    st.markdown("""
-    <div style="margin-top: 30px; margin-bottom: 15px;">
-        <hr style="border: 1px solid #e0e0e0; margin: 20px 0;">
-    </div>
-    """, unsafe_allow_html=True)
-    
     user_input = st.chat_input("💬 Ask me anything about Aarogya Vatika...")
     
     if user_input:
@@ -152,21 +152,6 @@ def main():
         
         # Rerun to update the display
         st.rerun()
-    
-    # Footer
-    st.markdown("---")
-    st.markdown("""
-    <div style="text-align: center; padding: 20px; background: #f8f9fa; border-radius: 8px; margin-top: 30px;">
-        <p style="color: #666; margin: 0; font-size: 0.9em;">
-            🪷 Powered by <strong>Aarogya Vatika</strong> | 
-            <a href="https://www.aarogyavatika.com" style="color: #2E8B57; text-decoration: none;">Visit our website</a> | 
-            <a href="tel:+91-9910474566" style="color: #2E8B57; text-decoration: none;">📞 +91-9910474566</a>
-        </p>
-        <p style="color: #999; margin: 5px 0 0 0; font-size: 0.8em;">
-            Your trusted companion for Ayurvedic wellness and natural healing
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
 
 def handle_sample_question(question, chat_handler):
     """Handle sample question clicks"""
