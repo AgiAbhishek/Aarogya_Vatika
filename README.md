@@ -160,7 +160,6 @@ streamlit run app.py --server.port 5000
 
 ### Production Deployment
 The application is configured for deployment on platforms like:
-- Replit
 - Heroku
 - AWS EC2
 - Google Cloud Platform
